@@ -10,32 +10,41 @@ import theme from '../config/theme';
 import '../styles/globals.scss';
 import '../styles/app.scss';
 
-// const ViewportProvider = dynamic(() => import('../config/viewPortContext'), {
-//   ssr: false,
-// });
+const ViewportProvider = dynamic(() => import('../config/viewPortContext'), {
+  ssr: false,
+});
 
 // swiper styles
 import 'swiper/css';
 import 'swiper/css/thumbs';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import SiteLayout from '../hoc/Layout/SiteLayout';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-function MyApp(props: { Component: any; emotionCache?: EmotionCache | undefined; pageProps: any; }) {
+function MyApp(props: {
+  Component: any;
+  emotionCache?: EmotionCache | undefined;
+  pageProps: any;
+}) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
+    <ViewportProvider>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <SessionProvider session={pageProps.session}>
+            <SiteLayout>
               <CssBaseline />
               <Component {...pageProps} />
+            </SiteLayout>
           </SessionProvider>
         </ThemeProvider>
       </CacheProvider>
+    </ViewportProvider>
   );
 }
 

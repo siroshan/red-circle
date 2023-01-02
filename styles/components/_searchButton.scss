@@ -1,0 +1,26 @@
+.search-btn-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .search {
+    width: 240px;
+    max-width: 0;
+    transition: all 0.5s ease;
+    position: absolute;
+    right: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+  }
+
+  .search-field-expanded {
+    max-width: 240px;
+    opacity: 1;
+    background-color: #e3b7a0;
+    margin-right: 30px;
+  }
+}
+
+  
+  

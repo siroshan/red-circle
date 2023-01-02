@@ -29,6 +29,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#85586F',
+      light: '#E3B7A0',
     },
   },
   shape: {

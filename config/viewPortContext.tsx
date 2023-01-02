@@ -5,9 +5,12 @@ export type ViewportContextType = {
   height: number;
 };
 
-const ViewportContext = React.createContext<ViewportContextType>({height:0, width: 0});
+const ViewportContext = React.createContext<ViewportContextType>({
+  height: 0,
+  width: 0,
+});
 
-const ViewportProvider = ({ children }: {children: ReactNode}) => {
+const ViewportProvider = ({ children }: { children: ReactNode }) => {
   // This is the exact same logic that we previously had in our hook
 
   const [width, setWidth] = React.useState(window.innerWidth);
