@@ -1,10 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@use'./utilities/variables' as v;
 
-$color-rose-gold: #edcdbb;
-$color-rose-gold-dark: #e3b7a0;
-$color-cream: #ffeddb;
-$color-chestnut: #643700;
-$color-purple: #85586f;
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -21,7 +17,7 @@ body {
 }
 
 body {
-  color: $color-cream;
+  color: v.$color-cream;
 }
 
 a {
@@ -41,9 +37,9 @@ a {
 }
 
 .color-rose-gold-dark {
-  color: $color-rose-gold-dark;
+  color: v.$color-rose-gold-dark;
 }
 
 .bg-color-cream {
-   background-color:$color-cream;
+   background-color: v.$color-cream;
 }

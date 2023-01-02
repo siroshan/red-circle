@@ -13,7 +13,7 @@ const MobNavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   
   return (
-    <Box width={1} bgcolor='primary.light'>
+    <Box width={1} bgcolor='primary.main'>
       <Stack
         direction='row'
         alignItems='center'

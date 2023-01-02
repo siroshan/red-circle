@@ -49,7 +49,7 @@ const SiteLayout = ({ children }: {children: ReactNode}) => {
         <meta name='twitter:image' content={'/logo.jpeg'} />
       </Head>
 
-      {width > 960 ? <NavBar /> : <MobNavBar />}
+      {width > 600 ? <NavBar /> : <MobNavBar />}
 
       <main className='main'>{children}</main>
     </div>

@@ -34,7 +34,7 @@ const CustomDrawer = () => {
         aria-label='account menu'
         onClick={toggleDrawer}
       >
-        <MenuIcon color='primary' />
+        <MenuIcon color='secondary' />
       </IconButton>
       <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
         <Box className='bg-color-cream' height={1}>
@@ -44,6 +44,7 @@ const CustomDrawer = () => {
                 className='search'
                 size='small'
                 placeholder='Search Wines'
+                color='secondary'
               />
             </ListItem>
             <ListItem>

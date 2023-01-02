@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 import createEmotionCache from '../config/createEmotionCache';
 import theme from '../config/theme';
 
-import '../styles/globals.scss';
 import '../styles/app.scss';
 
 const ViewportProvider = dynamic(() => import('../config/viewPortContext'), {
