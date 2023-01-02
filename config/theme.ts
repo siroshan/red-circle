@@ -10,7 +10,6 @@ const theme = createTheme({
       fontFamily: '"DM Serif Display", serif',
       fontWeight: 400,
       textTransform: 'capitalize',
-      letterSpacing: '10%',
       fontSize: '48px',
     },
     h4: {
@@ -23,7 +22,7 @@ const theme = createTheme({
       fontFamily: '"Josefin Sans", sans-serif',
       fontWeight: 600,
       textTransform: 'uppercase',
-      letterSpacing: '10%',
+      letterSpacing: '2px',
       fontSize: '24px',
     },
   },

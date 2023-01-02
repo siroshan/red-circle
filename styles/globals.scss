@@ -1,4 +1,4 @@
-@use'./utilities/variables' as v;
+@use './utilities/variables' as v;
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 
@@ -31,6 +31,40 @@ a {
   }
 }
 
+//swiper overrides
+.swiper-button-next {
+  background-image: url(./../public/logos/next-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-prev {
+  background-image: url(./../public/logos/prev-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .color-black {
   color: #000;
@@ -41,5 +75,6 @@ a {
 }
 
 .bg-color-cream {
-   background-color: v.$color-cream;
+  background-color: v.$color-cream;
 }
+

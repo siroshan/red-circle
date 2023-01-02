@@ -7,6 +7,10 @@ import dynamic from 'next/dynamic';
 import createEmotionCache from '../config/createEmotionCache';
 import theme from '../config/theme';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import '../styles/app.scss';
 
 const ViewportProvider = dynamic(() => import('../config/viewPortContext'), {

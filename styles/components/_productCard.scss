@@ -1,0 +1,40 @@
+@use '../utilities/variables' as v;
+
+.product-card-wrap {
+  width: 100%;
+  max-width: 220px;
+  height: 400px;
+  background-color: v.$color-rose-gold;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 600) {
+    max-width: 180px;
+  }
+
+  .img-wrap {
+    img {
+      max-height: 250px;
+      max-width: 100px;
+    }
+  }
+
+  .type {
+    color: #88737e;
+  }
+
+  .qty {
+    color: #88737e;
+  }
+
+  .price {
+    color: #85586f;
+    font-size: 20px;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+}
