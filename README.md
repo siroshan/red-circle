@@ -2,6 +2,20 @@
 
 Red Circle is an e-commerce site for wine store. The project is still in progress. Built using [NextJS](https://nextjs.org) and [Material-UI](https://mui.com). 
 
+## Progress
+
+- [x] Navigation bar
+- [x] Mobile navigation bar with drawer
+- [x] Product carousel
+- [ ] Footer
+- [ ] Home page
+- [ ] Product page
+- [ ] Cart page
+- [ ] Orders page
+- [ ] Order page
+- [ ] Authentication
+- [ ] Authorization
+
 ## Installation
 
 Use the package manager [NPM](https://www.npmjs.com) to install. 
