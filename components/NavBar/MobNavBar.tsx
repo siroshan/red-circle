@@ -13,16 +13,15 @@ const MobNavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   
   return (
-    <Box width={1} bgcolor='primary.main'>
+    <Box width={1} bgcolor='primary.main' position='sticky' top={0} zIndex={100}>
       <Stack
         direction='row'
         alignItems='center'
         justifyContent='space-between'
         width='100%'
         mx='auto'
-        maxWidth={1280}
       >
-        <Logo />
+        <Logo width={100}/>
         <CustomDrawer/>
       </Stack>
     </Box>

@@ -13,7 +13,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   color: #000;
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
@@ -31,43 +30,16 @@ a {
   }
 }
 
-//swiper overrides
-.swiper-button-next {
-  background-image: url(./../public/logos/next-arrow.svg);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-  width: 50px;
-  height: 50px;
-}
-
-.swiper-button-next::after {
-  display: none;
-}
-
-.swiper-button-prev {
-  background-image: url(./../public/logos/prev-arrow.svg);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-  width: 50px;
-  height: 50px;
-}
-
-.swiper-button-prev::after {
-  display: none;
-}
-
-.swiper-slide {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-
 .color-black {
   color: #000;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.color-navy-blue {
+  color: #282A3A;
 }
 
 .color-rose-gold-dark {

@@ -12,7 +12,7 @@ const NavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
   return (
-    <Box width={1} bgcolor='primary.dark'>
+    <Box width={1} bgcolor='primary.dark' position='sticky' top={0} zIndex={100}>
       <Stack
         direction='row'
         alignItems='center'
@@ -21,7 +21,7 @@ const NavBar = () => {
         mx='auto'
         maxWidth={1280}
       >
-        <Logo />
+        <Logo/>
         <Stack
           direction='row'
           alignItems='center'

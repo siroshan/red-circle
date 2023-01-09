@@ -30,11 +30,6 @@ const Carousel: FC<CarouselProps> = ({ title }) => {
 
   return (
     <Box width={1} bgcolor='primary.light' px={1}>
-      <Stack justifyContent={'space-between'} direction={'row'}>
-        <Typography variant={'h5'} component={'h2'}>
-          {title}
-        </Typography>
-      </Stack>
       <Box width={1} py={10} mx='auto' maxWidth={1100}>
         <Typography variant='h1' align='center' color='secondary' mb={10}>
           {title}

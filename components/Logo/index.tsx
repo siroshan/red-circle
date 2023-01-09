@@ -1,12 +1,16 @@
 import Box from '@mui/material/Box';
 import LogoImg from '/public/logo.png';
 import Image from 'next/image';
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
-const Logo = () => {
+type CarouselProps = {
+  width?: number;
+};
+
+const Logo: FC<CarouselProps> = ({ width = 100 }) => {
   return (
-    <Box position='relative' width={100}>
+    <Box position='relative' width={width}>
       <Link href='/'>
         <Image
           src={LogoImg}

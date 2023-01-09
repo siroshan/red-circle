@@ -22,7 +22,12 @@ const HomeBanner: FC = () => {
           In defeat you need it.
         </Typography>
 
-        <Typography variant='body1' className='description color-black'>
+        <Typography
+          variant='body1'
+          align='justify'
+          className='description color-black'
+          px={2}
+        >
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of

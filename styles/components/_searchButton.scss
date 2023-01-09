@@ -19,8 +19,11 @@
     opacity: 1;
     background-color: #e3b7a0;
     margin-right: 30px;
+
+    input {
+      &:active {
+        border-color: black;
+      }
+    }
   }
 }
-
-  
-  

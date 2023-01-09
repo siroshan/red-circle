@@ -3,8 +3,9 @@ import Head from 'next/head';
 import { useViewport } from '../../config/viewPortContext';
 import NavBar from '../../components/NavBar/NavBar';
 import MobNavBar from '../../components/NavBar/MobNavBar';
+import Footer from '../../components/Footer';
 
-const SiteLayout = ({ children }: {children: ReactNode}) => {
+const SiteLayout = ({ children }: { children: ReactNode }) => {
   const { width } = useViewport();
 
   return (
@@ -15,13 +16,13 @@ const SiteLayout = ({ children }: {children: ReactNode}) => {
                 <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' /> */}
         <link rel='manifest' href='/manifest.json' />
         <link rel='icon' href='/favicon.ico' />
-        <meta name='theme-color' content='#FFFFFF' />
+        <meta name='theme-color' content='#e3b7a0' />
         {/* <link rel='mask-icon' href='/favicons/safari-pinned-tab.svg' color='#FF582A' /> */}
 
         {/* SEO */}
         <meta
           name='description'
-          content="Sri Lanka's largest high quality fitness equipment provider. · Treadmills · Cross Trainers · Exercise Bikes · Benches · Home Gym · Ab Products."
+          content="Sri Lanka's largest colection of wines."
         />
         <meta property='og:title' content={'Fitness Zone'} />
         <meta
@@ -36,22 +37,20 @@ const SiteLayout = ({ children }: {children: ReactNode}) => {
           content={typeof window != 'undefined' ? window.location.href : ''}
         />
         <meta property='og:image' content={'/logo.jepg'} />
-        <meta property='og:image:alt' content={'Kanz Art'} />
+        <meta property='og:image:alt' content={'Red Circle'} />
         <meta property='og:image:secure_url' content={'/logo.jpeg'} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta
           name='twitter:description'
-          content={
-            " Sri Lanka's largest high quality fitness equipment provider. · Treadmills · Cross Trainers · Exercise Bikes · Benches · Home Gym · Ab Products."
-          }
+          content={"Sri Lanka's largest colection of wines."}
         />
         <meta name='twitter:title' content={'add content here'} />
         <meta name='twitter:image' content={'/logo.jpeg'} />
       </Head>
 
       {width > 600 ? <NavBar /> : <MobNavBar />}
-
       <main className='main'>{children}</main>
+      <Footer />
     </div>
   );
 };

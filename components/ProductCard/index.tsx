@@ -10,7 +10,7 @@ const ProductCard = () => {
       vocab='https://schema.org/'
       typeof='Product'
     >
-      <Typography property='name' className='color-black' mb={3}>
+      <Typography property='name' color='common.black' mb={3}>
         Stars in the Dark
       </Typography>
       <div className='img-wrap'>
