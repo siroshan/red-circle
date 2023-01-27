@@ -40,6 +40,33 @@ const theme = createTheme({
   shape: {
     borderRadius: 0,
   },
+
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: '#000',
+          '&.Mui-focused': {
+            color: '#000',
+          },
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: '#000',
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#85586F',
+          },
+        },
+        notchedOutline: {
+          borderColor: '#85586F',
+        },
+      },
+    },
+  },
 });
 
 export default theme;
