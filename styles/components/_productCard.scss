@@ -8,30 +8,43 @@
   padding: 10px;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  position: relative;
 
   @media (max-width: 600) {
     max-width: 180px;
   }
 
   .img-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+
     img {
-      max-height: 250px;
+      margin-right: auto;
+      margin-left: auto;
+      object-fit: contain;
+      max-height: 200px;
       max-width: 100px;
       filter: drop-shadow(2px 4px 8px #000);
     }
   }
 
-  .type {
-    color: #88737e;
-  }
+  .detail-wrap {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    .type {
+      color: #88737e;
+    }
 
-  .qty {
-    color: #88737e;
-  }
+    .qty {
+      color: #88737e;
+    }
 
-  .price {
-    color: #85586f;
-    font-size: 20px;
+    .price {
+      color: #85586f;
+      font-size: 20px;
+    }
   }
 
   &:hover {

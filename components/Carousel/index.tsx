@@ -13,9 +13,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 type CarouselProps = {
   title: string;
+  products: IProduct[];
 };
 
-const Carousel: FC<CarouselProps> = ({ title }) => {
+const Carousel: FC<CarouselProps> = ({ title, products }) => {
   const [produts, setProducts] = useState<IProduct[]>([]);
   const getProducts = async () => {
     try {
@@ -25,8 +26,6 @@ const Carousel: FC<CarouselProps> = ({ title }) => {
       axiosErrorHandler(err);
     }
   };
-
-  const productArrray = [1, 2, 3, 4, 5];
 
   return (
     <Box width={1} bgcolor='primary.light' px={1}>
@@ -48,9 +47,9 @@ const Carousel: FC<CarouselProps> = ({ title }) => {
             },
           }}
         >
-          {productArrray.map((prod, i) => (
-            <SwiperSlide key={i}>
-              <ProductCard />
+          {products.map((product, i) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard product={product}/>
             </SwiperSlide>
           ))}
         </Swiper>

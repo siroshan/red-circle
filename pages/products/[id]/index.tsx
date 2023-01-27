@@ -7,54 +7,77 @@ import WineImg from '/public/products/wine.png';
 import Button from '@mui/material/Button';
 import ProductBanner from '../../../components/Banners/ProductBanner';
 import Carousel from '../../../components/Carousel';
+import { GetServerSideProps } from 'next';
+import { IProduct } from '../../../Interface/product.interface';
+import axios from '../../../utils/axios';
+import { FC } from 'react';
 
-const Index = () => {
+type ProdCardProps = {
+  product: IProduct;
+  recommendedProducts: IProduct[];
+};
+
+const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
   return (
     <Box width={1} bgcolor='primary.light'>
-      <Box maxWidth={1100} mx='auto' width={1} py={5} px={1}>
+      <Box
+        maxWidth={1100}
+        mx='auto'
+        width={1}
+        py={5}
+        px={1}
+        vocab='https://schema.org/'
+        typeof='Product'
+      >
         <Grid container direction='row' alignItems='flex-start'>
           <Grid item xs={12} md={6}>
-            <Image
-              src={WineImg}
-              style={{ width: '100%', height: 'auto', maxWidth: '200px' }}
-              priority
-              alt='wine image'
-            />
+            <Box position='relative' width='100%' height={300}>
+              <Image
+                src={product.image}
+                priority
+                style={{ objectFit: 'contain' }}
+                fill
+                alt='wine image'
+                property='image'
+              />
+            </Box>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography
               textTransform='capitalize'
               className='color-navy-blue'
               fontSize={32}
+              property='name'
             >
-              Stars in the Dark
+              {product.name}
             </Typography>
             <Stack direction='row' alignItems='center'>
               <Typography
                 color='secondary.light'
                 variant='subtitle2'
                 width={150}
+                textTransform='capitalize'
               >
-                Sparkling Wine
+                {product.type}
               </Typography>
               <Typography
                 color='secondary.light'
                 variant='subtitle2'
                 width={150}
               >
-                750ml
+                {product.volume}ml
               </Typography>
             </Stack>
             <Typography color='common.black' mt={4}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. It is a
-              long established fact that a reader will be distracted by the
-              readable content of a page when looking at its layout.It is a long
-              established fact that a reader will be distracted by the readable
-              content of a page when looking at its layout.
+              {product.description}
             </Typography>
-            <Typography variant='h4' color='secondary.light' my={4}>
-              $12.80
+            <Typography
+              variant='h4'
+              color='secondary.light'
+              my={4}
+              property='price'
+            >
+              ${product.price}
             </Typography>
             <Button variant='contained' color='primary'>
               Add to Cart
@@ -63,9 +86,19 @@ const Index = () => {
         </Grid>
       </Box>
       <ProductBanner />
-      <Carousel title='Recommended Wines'/>
+      <Carousel products={recommendedProducts} title='Recommended Wines' />
     </Box>
   );
 };
 
 export default Index;
+
+export async function getServerSideProps(context: GetServerSideProps) {
+  const id = context.params.id;
+  const { data: product } = await axios.get<IProduct>(`products/${id}`);
+  const { data: recommendedProducts } = await axios.get<IProduct>(`products`);
+
+  return {
+    props: { product, recommendedProducts }, // will be passed to the page component as props
+  };
+}

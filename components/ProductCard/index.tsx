@@ -1,35 +1,59 @@
 import Image from 'next/image';
 import WineImg from '/public/products/wine.png';
-import React from 'react';
+import React, { FC } from 'react';
 import Typography from '@mui/material/Typography';
+import { IProduct } from '../../Interface/product.interface';
+import Link from 'next/link';
 
-const ProductCard = () => {
+type ProdCardProps = {
+  product: IProduct;
+};
+
+const ProductCard: FC<ProdCardProps> = ({ product }) => {
   return (
-    <div
+    <Link
+      href={`products/${product.id}`}
       className='product-card-wrap'
       vocab='https://schema.org/'
       typeof='Product'
     >
-      <Typography property='name' color='common.black' mb={3}>
-        Stars in the Dark
+      <Typography
+        property='name'
+        textTransform='capitalize'
+        color='common.black'
+        mb={3}
+      >
+        {product.name}
       </Typography>
       <div className='img-wrap'>
-        <Image src={WineImg} priority alt='product image' property='image' />
+        <Image
+          fill
+          src={product.image}
+          priority
+          alt='product image'
+          property='image'
+        />
       </div>
-
-      <Typography fontWeight={600} color='secondary.light' className='type'>
-        Red Wine
-      </Typography>
-      <Typography fontWeight={600} color='secondary.light' className='qty'>
-        750ml
-      </Typography>
-      <span className='price' property='priceCurrency'>
-        $
-      </span>
-      <span className='price' property='price'>
-        14.99
-      </span>
-    </div>
+      <div className='detail-wrap'>
+        <Typography
+          fontWeight={600}
+          textTransform='capitalize'
+          color='secondary.light'
+          className='type'
+        >
+          {product.type}
+        </Typography>
+        <Typography fontWeight={600} color='secondary.light' className='qty'>
+          {product.volume}ml
+        </Typography>
+        <span className='price' property='priceCurrency'>
+          $
+        </span>
+        <span className='price' property='price'>
+          {product.price}
+        </span>
+      </div>
+    </Link>
   );
 };
 

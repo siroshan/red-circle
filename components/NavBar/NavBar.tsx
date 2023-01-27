@@ -30,8 +30,8 @@ const NavBar = () => {
           maxWidth={300}
           width={1}
         >
-          <Link href='/wines'>Wines</Link>
-          <Link href='/our-story'>Our Story</Link>
+          <Link className='link' href='/wines'>Wines</Link>
+          <Link className='link' href='/our-story'>Our Story</Link>
           <SearchButton
             setIsSearchActive={setIsSearchActive}
             isSearchActive={isSearchActive}

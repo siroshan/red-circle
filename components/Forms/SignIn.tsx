@@ -11,6 +11,7 @@ import { AxiosResponse } from 'axios';
 import { axiosErrorHandler } from '../../utils/axiosErrorHandler';
 import axios from '../../utils/axios';
 import { Typography } from '@mui/material';
+import Link from 'next/link';
 
 const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -104,11 +105,19 @@ const SignInForm: FC = () => {
               />
             )}
           />
+          <Link href='/forgot-password' className='link'>
+            Forgot password?
+          </Link>
         </Box>
         <Box width={1} textAlign='center' mb={8} mt={4}>
           <Button type='submit' variant='contained'>
             Sign In
           </Button>
+          <Box mt={4}>
+            <Link className='link' href='/signup'>
+              New here? Create Account.
+            </Link>
+          </Box>
         </Box>
       </form>
     </Box>
