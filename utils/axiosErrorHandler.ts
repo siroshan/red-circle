@@ -4,12 +4,12 @@ import { appToast } from './appToast';
 const axiosErrorHandler = (error: unknown, isSuperAdmin: boolean = false) => {
   const err = error as AxiosError;
   if (!err.isAxiosError) {
-    appToast({ message: 'Something Went Wrong!', type: 'error' });
+    appToast('Something Went Wrong!', 'error');
     return;
   }
 
   if (err.code && err.code === 'ERR_NETWORK') {
-    appToast({ message: err.message, type: 'error' });
+    appToast(err.message, 'error');
     return;
   }
 
@@ -19,30 +19,21 @@ const axiosErrorHandler = (error: unknown, isSuperAdmin: boolean = false) => {
     const message: string | string[] = data.message;
 
     if (err.response.status === 401) {
-      appToast({
-        message: 'Your session has expired. Please sign in again.',
-        type: 'warning',
-        id: '401',
-      });
-
+      appToast('Your session has expired. Please sign in again.', 'warning');
       return;
     }
 
     if (Array.isArray(message)) {
-      appToast({ message: message[0], type: 'error' });
+      appToast(message[0], 'error');
       return;
     }
 
     if (err.request.responseURL) {
-      appToast({
-        message: message,
-        type: 'error',
-        id: err.request.responseURL + err.response.status,
-      });
+      appToast(message, 'error');
       return;
     }
 
-    appToast({ message: message, type: 'error' });
+    appToast(message, 'error');
   }
 };
 

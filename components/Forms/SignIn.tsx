@@ -12,10 +12,12 @@ import { axiosErrorHandler } from '../../utils/axiosErrorHandler';
 import axios from '../../utils/axios';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
+  const router = useRouter();
 
   const {
     control,
@@ -24,16 +26,16 @@ const SignInForm: FC = () => {
   } = useForm();
 
   const handleSingIn = async (data: FieldValues) => {
-    console.log('clicked');
-
     setIsLoading(true);
     try {
       const res: AxiosResponse = await axios.post('auth/signin', {
         email: data.email,
         password: data.password,
       });
+      router.push('/');
     } catch (err) {
       axiosErrorHandler(err);
+      console.log('sign in error', err);
     }
     setIsLoading(false);
   };

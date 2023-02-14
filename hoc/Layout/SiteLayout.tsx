@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
-import { useViewport } from '../../config/viewPortContext';
+import { useViewport } from '../../context/viewportContext';
 import NavBar from '../../components/NavBar/NavBar';
 import MobNavBar from '../../components/NavBar/MobNavBar';
 import Footer from '../../components/Footer';

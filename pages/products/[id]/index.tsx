@@ -3,14 +3,16 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
-import WineImg from '/public/products/wine.png';
 import Button from '@mui/material/Button';
 import ProductBanner from '../../../components/Banners/ProductBanner';
 import Carousel from '../../../components/Carousel';
 import { GetServerSideProps } from 'next';
 import { IProduct } from '../../../Interface/product.interface';
 import axios from '../../../utils/axios';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { axiosErrorHandler } from '../../../utils/axiosErrorHandler';
+import { appToast } from '../../../utils/appToast';
 
 type ProdCardProps = {
   product: IProduct;
@@ -18,6 +20,23 @@ type ProdCardProps = {
 };
 
 const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [qty, setQty] = useState(1);
+
+  const onAddToCart = async () => {
+    setIsLoading(true);
+    try {
+      const res: AxiosResponse = await axios.patch('carts/add', {
+        productID: product.id,
+        qty: qty,
+      });
+      appToast('Item added to cart successfully');
+    } catch (err) {
+      axiosErrorHandler(err);
+    }
+    setIsLoading(false);
+  };
+
   return (
     <Box width={1} bgcolor='primary.light'>
       <Box
@@ -79,7 +98,7 @@ const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
             >
               ${product.price}
             </Typography>
-            <Button variant='contained' color='primary'>
+            <Button variant='contained' color='primary' onClick={onAddToCart} disabled={isLoading}>
               Add to Cart
             </Button>
           </Grid>

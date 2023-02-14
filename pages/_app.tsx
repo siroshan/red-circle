@@ -6,13 +6,14 @@ import dynamic from 'next/dynamic';
 import createEmotionCache from '../config/createEmotionCache';
 import theme from '../config/theme';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import '../styles/app.scss';
 
-const ViewportProvider = dynamic(() => import('../config/viewPortContext'), {
+
+
+
+const ViewportProvider = dynamic(() => import('../context/viewportContext'), {
+  ssr: false,
+});
+const CartProvider = dynamic(() => import('../context/cartContext'), {
   ssr: false,
 });
 
@@ -21,7 +22,14 @@ import 'swiper/css';
 import 'swiper/css/thumbs';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+
+//toastify style
+import "react-toastify/dist/ReactToastify.css";
+
+import '../styles/app.scss';
+
 import SiteLayout from '../hoc/Layout/SiteLayout';
+import { ToastContainer } from 'react-toastify';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -35,15 +43,18 @@ function MyApp(props: {
 
   return (
     <ViewportProvider>
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <SiteLayout>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </SiteLayout>
-        </ThemeProvider>
-      </CacheProvider>
+      <CartProvider>
+        <CacheProvider value={emotionCache}>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <SiteLayout>
+              <CssBaseline />
+              <Component {...pageProps} />
+              <ToastContainer />
+            </SiteLayout>
+          </ThemeProvider>
+        </CacheProvider>
+      </CartProvider>
     </ViewportProvider>
   );
 }
