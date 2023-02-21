@@ -8,8 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { FC, useState } from 'react';
 import { AxiosResponse } from 'axios';
-import { axiosErrorHandler } from '../../utils/axiosErrorHandler';
-import axios from '../../utils/axios';
+import { axiosErrorHandler } from '../../../utils/axiosErrorHandler';
+import axios from '../../../utils/axios';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -23,9 +23,9 @@ const SignInForm: FC = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: 'onBlur' });
 
-  const handleSingIn = async (data: FieldValues) => {
+  const onsubmit = async (data: FieldValues) => {
     setIsLoading(true);
     try {
       const res: AxiosResponse = await axios.post('auth/signin', {
@@ -35,14 +35,13 @@ const SignInForm: FC = () => {
       router.push('/');
     } catch (err) {
       axiosErrorHandler(err);
-      console.log('sign in error', err);
     }
     setIsLoading(false);
   };
 
   return (
     <Box className='signin-wrap'>
-      <form onSubmit={handleSubmit(handleSingIn)}>
+      <form onSubmit={handleSubmit(onsubmit)}>
         <Typography
           variant='h1'
           color='secondary'
@@ -73,7 +72,7 @@ const SignInForm: FC = () => {
             )}
           />
         </Box>
-        <Box mb={2}>
+        <Box mb={2} width={1}>
           <Controller
             name='password'
             control={control}
@@ -85,7 +84,6 @@ const SignInForm: FC = () => {
               <TextField
                 {...field}
                 fullWidth
-                autoComplete={false}
                 label='Password'
                 type={!showPwd && 'password'}
                 size='small'

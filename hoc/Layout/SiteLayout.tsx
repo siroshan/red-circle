@@ -1,11 +1,14 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
-import { useViewport } from '../../context/viewportContext';
+import { useViewport } from '../../context/viewPortContext';
 import NavBar from '../../components/NavBar/NavBar';
 import MobNavBar from '../../components/NavBar/MobNavBar';
 import Footer from '../../components/Footer';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const SiteLayout = ({ children }: { children: ReactNode }) => {
+
   const { width } = useViewport();
 
   return (

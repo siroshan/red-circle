@@ -1,12 +1,14 @@
 @use'./utilities/swiper';
-@use'./utilities/mui';
 @use'./globals';
 
 // components
-@use'./components/searchButton';
 @use'./components/homeBanner';
 @use'./components/productBanner';
 @use'./components/productCard';
 @use'./components/signIn';
 @use'./components/cartProdCart';
-@use'./components/numberInput';
+
+//UI
+@use'./components/UI/searchButton';
+@use'./components/UI/numberInput';
+@use'./components/UI/mui';

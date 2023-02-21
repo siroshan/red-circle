@@ -16,10 +16,6 @@ const Index: FC = () => {
   const getTotal = (cartItems: ICartItem[]) => {
     let sum: number = 0;
 
-    // cartItems.forEach((cartItem) => {
-    //   sum += cartItem.qty * cartItem.product.price;
-    // });
-
     cartItems.map((cartItem, i) => {
       sum += cartItem.qty * cartItem.product.price;
     });
@@ -39,7 +35,7 @@ const Index: FC = () => {
     setIsLoading(false);
   }, []);
   return (
-    <Box width={1} bgcolor='primary.light' py={10}>
+    <Box width={1} bgcolor='primary.light' py={10} height={1}>
       <Box maxWidth={1100} mx='auto' width={1}>
         {cart?.cartItems && cart.cartItems?.length > 0 ? (
           <>
@@ -60,16 +56,15 @@ const Index: FC = () => {
                 ${numberFormat(getTotal(cart?.cartItems))}
               </Typography>
             </Box>
+            <Box mt={5} textAlign='right'>
+              <Button variant='contained'>Checkout</Button>
+            </Box>
           </>
         ) : (
           <Typography variant='h4' textAlign='center' color='secondary.dark'>
             Start adding items to the cart
           </Typography>
         )}
-
-        <Box mt={5} textAlign='right'>
-          <Button variant='contained'>Checkout</Button>
-        </Box>
       </Box>
     </Box>
   );

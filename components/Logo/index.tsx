@@ -4,11 +4,11 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-type CarouselProps = {
+type LogoProps = {
   width?: number;
 };
 
-const Logo: FC<CarouselProps> = ({ width = 100 }) => {
+const Logo: FC<LogoProps> = ({ width = 100 }) => {
   return (
     <Box position='relative' width={width}>
       <Link href='/'>

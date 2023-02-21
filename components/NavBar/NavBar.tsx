@@ -14,7 +14,6 @@ import { CartContext } from '../../context/cartContext';
 const NavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const { cartItems } = useContext(CartContext);
-  console.log('cart items', cartItems);
 
   return (
     <Box

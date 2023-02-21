@@ -10,7 +10,7 @@ import theme from '../config/theme';
 
 
 
-const ViewportProvider = dynamic(() => import('../context/viewportContext'), {
+const ViewportProvider = dynamic(() => import('../context/viewPortContext'), {
   ssr: false,
 });
 const CartProvider = dynamic(() => import('../context/cartContext'), {

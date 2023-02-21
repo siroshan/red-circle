@@ -29,7 +29,6 @@ export async function getServerSideProps(context: GetServerSideProps) {
       props: { products: data }, // will be passed to the page component as props
     };
   } catch (err) {
-    console.log('err>>>>>>>>>>>', err);
     return { notFound: true };
   }
 }

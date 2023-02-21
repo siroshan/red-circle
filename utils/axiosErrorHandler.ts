@@ -1,7 +1,9 @@
 import { AxiosError, AxiosResponse } from 'axios';
+import { useRouter } from 'next/router';
 import { appToast } from './appToast';
 
 const axiosErrorHandler = (error: unknown, isSuperAdmin: boolean = false) => {
+
   const err = error as AxiosError;
   if (!err.isAxiosError) {
     appToast('Something Went Wrong!', 'error');
@@ -19,6 +21,7 @@ const axiosErrorHandler = (error: unknown, isSuperAdmin: boolean = false) => {
     const message: string | string[] = data.message;
 
     if (err.response.status === 401) {
+      
       appToast('Your session has expired. Please sign in again.', 'warning');
       return;
     }
