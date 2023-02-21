@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/SearchTwoTone';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
+import Box from '@mui/material/Box';
 
 type SearchButtonProps = {
   isSearchActive: boolean;
@@ -24,19 +25,19 @@ const SearchButton: FC<SearchButtonProps> = ({
 
   return (
     <div className='search-btn-wrap'>
-        <TextField
-          className='search'
-          size='small'
-          placeholder='Search Wines'
-          ref={SearchFieldRef}
-        />
-        <IconButton onClick={onSearchClick}>
-          {isSearchActive ? (
-            <CancelIcon className='color-black' fontSize='large' />
-          ) : (
-            <SearchIcon className='color-black' fontSize='large' />
-          )}
-        </IconButton>
+      <TextField
+        className='search'
+        size='small'
+        placeholder='Search Wines'
+        ref={SearchFieldRef}
+      />
+      <IconButton onClick={onSearchClick}>
+        {isSearchActive ? (
+          <CancelIcon className='color-black' fontSize='large' />
+        ) : (
+          <SearchIcon className='color-black' fontSize='large' />
+        )}
+      </IconButton>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import axios from '../../utils/axios';
 import { ICart } from '../../Interface/cart.interface';
 import { CartContext } from '../../context/cartContext';
+import ProfileMenu from './ProfileMenu';
 
 const NavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
@@ -37,7 +38,7 @@ const NavBar = () => {
           alignItems='center'
           justifyContent='space-between'
           spacing={3}
-          maxWidth={300}
+          maxWidth={400}
           width={1}
         >
           <Link className='link' href='/wines'>
@@ -52,30 +53,33 @@ const NavBar = () => {
           />
           <Box position='relative'>
             <Link href='/cart'>
-              <IconButton>
-                <ShoppingBagTwoToneIcon
-                  className='color-black'
-                  fontSize='large'
-                />
-                {cartItems && cartItems.length > 0 ? (
-                  <Box
-                    position='absolute'
-                    right={5}
-                    top={5}
-                    width={20}
-                    height={20}
-                    fontWeight={600}
-                    borderRadius='50%'
-                    bgcolor='primary.light'
-                    fontSize={12}
-                    pt='2px'
-                  >
-                    {cartItems.length}
-                  </Box>
-                ) : null}
-              </IconButton>
+              <Box borderRadius='50%' border={2} borderColor='primary.light'>
+                <IconButton>
+                  <ShoppingBagTwoToneIcon
+                    className='color-black'
+                    fontSize='large'
+                  />
+                  {cartItems && cartItems.length > 0 ? (
+                    <Box
+                      position='absolute'
+                      right={5}
+                      top={5}
+                      width={20}
+                      height={20}
+                      fontWeight={600}
+                      borderRadius='50%'
+                      bgcolor='primary.light'
+                      fontSize={12}
+                      pt='2px'
+                    >
+                      {cartItems.length}
+                    </Box>
+                  ) : null}
+                </IconButton>
+              </Box>
             </Link>
           </Box>
+          <ProfileMenu />
         </Stack>
       </Stack>
     </Box>

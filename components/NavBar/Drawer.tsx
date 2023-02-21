@@ -10,22 +10,37 @@ import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import WineBarIcon from '@mui/icons-material/WineBarTwoTone';
 import AutoStoriesIcon from '@mui/icons-material/AutoStoriesTwoTone';
+import ViewListTwoToneIcon from '@mui/icons-material/ViewListTwoTone';
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import ShoppingBagTwoToneIcon from '@mui/icons-material/ShoppingBagTwoTone';
 import TextField from '@mui/material/TextField';
-import CartIcon from '../Icons/Cart';
 import Link from 'next/link';
 import Drawer from '@mui/material/Drawer';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const CustomDrawer = () => {
+  const router = useRouter();
+
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen((prev) => !prev);
   };
 
-  const navLink = (href: string, label: string) => (
-    <Link href={href}>{label}</Link>
-  );
+  const handleLogOut = () => {
+    axios
+      .post('/signout')
+      .then((res) => {
+        router.replace('/');
+        toggleDrawer();
+      })
+      .catch((err) => {
+        axiosErrorHandler(err);
+      });
+  };
+
   return (
     <>
       <IconButton
@@ -37,7 +52,7 @@ const CustomDrawer = () => {
         <MenuIcon color='secondary' />
       </IconButton>
       <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
-        <Box className='bg-color-cream' height={1}>
+        <Box className='primary.light' height={1}>
           <List>
             <ListItem>
               <TextField
@@ -47,31 +62,72 @@ const CustomDrawer = () => {
                 color='secondary'
               />
             </ListItem>
+            <Link href='/cart'>
+              <ListItem>
+                <ListItemButton onClick={toggleDrawer}>
+                  <ListItemIcon>
+                    <ShoppingBagTwoToneIcon
+                      className='color-black'
+                      fontSize='large'
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary='Cart' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href='/wines'>
+              <ListItem>
+                <ListItemButton onClick={toggleDrawer}>
+                  <ListItemIcon>
+                    <WineBarIcon className='color-black' fontSize='large' />
+                  </ListItemIcon>
+                  <ListItemText primary='Wines' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href='/our-story'>
+              <ListItem>
+                <ListItemButton onClick={toggleDrawer}>
+                  <ListItemIcon>
+                    <AutoStoriesIcon className='color-black' fontSize='large' />
+                  </ListItemIcon>
+                  <ListItemText primary='Our Story' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Divider />
+            <Link href='/profile'>
+              <ListItem>
+                <ListItemButton onClick={toggleDrawer}>
+                  <ListItemIcon>
+                    <AccountCircleTwoToneIcon
+                      className='color-black'
+                      fontSize='large'
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary='Our Story' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href='/orders'>
+              <ListItem>
+                <ListItemButton onClick={toggleDrawer}>
+                  <ListItemIcon>
+                    <ViewListTwoToneIcon
+                      className='color-black'
+                      fontSize='large'
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary='Our Story' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
             <ListItem>
-              <ListItemButton>
+              <ListItemButton onClick={handleLogOut}>
                 <ListItemIcon>
-                  <ShoppingBagTwoToneIcon
-                    className='color-black'
-                    fontSize='large'
-                  />
+                  <LogoutTwoToneIcon className='color-black' />
                 </ListItemIcon>
-                <ListItemText primary={navLink('/cart', 'Cart')} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <WineBarIcon className='color-black' fontSize='large' />
-                </ListItemIcon>
-                <ListItemText primary={navLink('/wines', 'Wines')} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <AutoStoriesIcon className='color-black' fontSize='large' />
-                </ListItemIcon>
-                <ListItemText primary={navLink('/our-story', 'Our Story')} />
+                Logout
               </ListItemButton>
             </ListItem>
           </List>
