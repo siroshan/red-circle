@@ -5,15 +5,21 @@ import Logo from '../Logo';
 import Link from 'next/link';
 import SearchButton from './SearchButton';
 import ShoppingBagTwoToneIcon from '@mui/icons-material/ShoppingBagTwoTone';
-import CartIcon from '../Icons/Cart';
+import ShoppingBagOutlined from '@mui/icons-material/ShoppingBagOutlined';
 import IconButton from '@mui/material/IconButton';
 import CustomDrawer from './Drawer';
 
 const MobNavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-  
+
   return (
-    <Box width={1} bgcolor='primary.main' position='sticky' top={0} zIndex={100}>
+    <Box
+      width={1}
+      bgcolor='primary.main'
+      position='sticky'
+      top={0}
+      zIndex={100}
+    >
       <Stack
         direction='row'
         alignItems='center'
@@ -21,8 +27,14 @@ const MobNavBar = () => {
         width='100%'
         mx='auto'
       >
-        <Logo width={100}/>
-        <CustomDrawer/>
+        <Logo width={100} />
+
+        <Stack direction='row' justifyContent='flex-end' alignItems='center'>
+          <IconButton>
+            <ShoppingBagOutlined color='secondary' fontSize='large' />
+          </IconButton>
+          <CustomDrawer />
+        </Stack>
       </Stack>
     </Box>
   );

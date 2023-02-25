@@ -8,8 +8,8 @@ import ViewListTwoToneIcon from '@mui/icons-material/ViewListTwoTone';
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import { useState } from 'react';
-import axios from '../../utils/axios';
-import { axiosErrorHandler } from '../../utils/axiosErrorHandler';
+import axios from '../../../utils/axios';
+import { axiosErrorHandler } from '../../../utils/axiosErrorHandler';
 import { useRouter } from 'next/router';
 
 const ProfileMenu = () => {

@@ -7,14 +7,14 @@ Red Circle is an e-commerce site for wine store. The project is still in progres
 - [x] Navigation bar
 - [x] Mobile navigation bar with drawer
 - [x] Product carousel
-- [ ] Footer
-- [ ] Home page
-- [ ] Product page
-- [ ] Cart page
+- [x] Footer
+- [x] Home page
+- [x] Product page
+- [x] Cart page
 - [ ] Orders page
 - [ ] Order page
-- [ ] Authentication
-- [ ] Authorization
+- [x] Authentication
+- [x] Authorization
 
 ## Installation
 

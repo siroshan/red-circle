@@ -56,3 +56,20 @@
   background-color: v.$color-cream;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+//tabs
+.MuiTabs-root {
+  .MuiTabs-scroller {
+    .MuiTabs-flexContainer {
+      .MuiButtonBase-root {
+        transition: all 0.3s ease-in-out;
+        &.Mui-selected {
+          background-color: v.$color-purple;
+        }
+      }
+    }
+    .MuiTabs-indicator{
+      display: none;
+    }
+  }
+}
