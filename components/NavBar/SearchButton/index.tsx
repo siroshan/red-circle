@@ -28,7 +28,7 @@ const SearchButton: FC<SearchButtonProps> = ({
     e.preventDefault();
     push({
       pathname: '/products',
-      query: { searchQuery: e.target.searchTxt.value },
+      query: { searchQuery: e.target.searchTxt.value.toLowerCase() },
     });
     console.log('form submit', e);
   };
