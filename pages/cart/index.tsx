@@ -36,7 +36,7 @@ const Index: FC = () => {
   }, []);
   return (
     <Box width={1} bgcolor='primary.light' py={10} height={1}>
-      <Box maxWidth={1100} mx='auto' width={1}>
+      <Box maxWidth={1280} mx='auto' width={1}>
         {cart?.cartItems && cart.cartItems?.length > 0 ? (
           <>
             {cart.cartItems.map((cartItem, i) => (

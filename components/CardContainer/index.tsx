@@ -19,15 +19,16 @@ const CardContainer: FC<CardContainerProps> = ({
   handlePageChange,
 }) => {
   return (
-    <Box mt={12} maxWidth={1280} width={1} mx='auto'>
+    <Box mt={6} maxWidth={1280} width={1} mx='auto'>
       <Grid
         container
         direction='row'
         justifyContent='flex-start'
         alignItems='center'
+        spacing={2}
       >
         {products.map((product, i) => (
-          <Grid item key={product.id} xs={12} sm={6} md={3} spacing={2} mb={2}>
+          <Grid item key={product.id} xs={12} sm={6} md={3}  mb={2}>
             <Box mx='auto' width='fit-content'>
               <ProductCard product={product} />
             </Box>
@@ -36,7 +37,7 @@ const CardContainer: FC<CardContainerProps> = ({
       </Grid>
       <Box width='fit-content' mx='auto' my={4}>
         <Pagination
-          count={count}
+          count={Math.ceil(count/10)}
           page={page}
           onChange={handlePageChange}
           shape='rounded'
