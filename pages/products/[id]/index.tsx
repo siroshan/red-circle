@@ -9,10 +9,11 @@ import Carousel from '../../../components/Carousel';
 import { GetServerSideProps } from 'next';
 import { IProduct } from '../../../Interface/product.interface';
 import axios from '../../../utils/axios';
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { axiosErrorHandler } from '../../../utils/axiosErrorHandler';
 import { appToast } from '../../../utils/appToast';
+import { CartContext } from '../../../context/cartContext';
 
 type ProdCardProps = {
   product: IProduct;
@@ -22,20 +23,21 @@ type ProdCardProps = {
 const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [qty, setQty] = useState(1);
+  const { addToCart } = useContext(CartContext);
 
-  const onAddToCart = async () => {
-    setIsLoading(true);
-    try {
-      const res: AxiosResponse = await axios.patch('carts/add', {
-        productID: product.id,
-        qty: qty,
-      });
-      appToast('Item added to cart successfully');
-    } catch (err) {
-      axiosErrorHandler(err);
-    }
-    setIsLoading(false);
-  };
+  // const onAddToCart = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const res: AxiosResponse = await axios.patch('carts/add', {
+  //       productID: product.id,
+  //       qty: qty,
+  //     });
+  //     appToast('Item added to cart successfully');
+  //   } catch (err) {
+  //     axiosErrorHandler(err);
+  //   }
+  //   setIsLoading(false);
+  // };
 
   return (
     <Box width={1} bgcolor='primary.light'>
@@ -98,7 +100,12 @@ const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
             >
               ${product.price}
             </Typography>
-            <Button variant='contained' color='primary' onClick={onAddToCart} disabled={isLoading}>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={() => addToCart(product, qty)}
+              disabled={isLoading}
+            >
               Add to Cart
             </Button>
           </Grid>

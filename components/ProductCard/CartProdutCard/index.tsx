@@ -1,15 +1,28 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { ICart } from '../../../Interface/cart.interface';
 import { ICartItem } from '../../../Interface/cartItem.interface';
 import { numberFormat } from '../../../utils/numberFormat';
 import NumberInput from '../../UI/NumberInput';
 import Box from '@mui/material/Box';
+import { CartContext } from '../../../context/cartContext';
 
 const CartProductCard: FC<{ cartItem: ICartItem }> = ({ cartItem }) => {
+  const { updateQty, removeFromCart } = useContext(CartContext);
+
   const [qty, setQty] = useState(cartItem.qty);
+
+  useEffect(()=> {
+    if(qty === 0 && qty !== cartItem.qty) {
+      removeFromCart(cartItem.id)
+    } 
+    if(qty !== cartItem.qty) {
+      updateQty(cartItem.id, qty)
+    }
+  }, [qty])
+
   const [isLoading, setIsLoading] = useState(false);
   return (
     <Grid
@@ -35,7 +48,7 @@ const CartProductCard: FC<{ cartItem: ICartItem }> = ({ cartItem }) => {
       </Grid>
       <Grid container item xs={9}>
         <Grid item xs={12} sm={12} md={4}>
-          <Typography color='secondary.dark' variant='body1'>
+          <Typography color='secondary.dark' variant='body1' textTransform='capitalize'>
             {cartItem.product.name}
           </Typography>
           <Typography color='secondary.main' variant='subtitle1'>

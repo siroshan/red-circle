@@ -20,7 +20,7 @@ const NumberInput: FC<NumberInputProps> = ({
   };
 
   const onMinusHandler = () => {
-    if (qty > 1) {
+    if (qty >= 0) {
       setQty(qty - 1);
     }
   };

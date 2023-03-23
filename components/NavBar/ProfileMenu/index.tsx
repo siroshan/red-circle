@@ -25,7 +25,7 @@ const ProfileMenu = () => {
 
   const handleLogOut = () => {
     axios
-      .post('/signout')
+      .post('auth/signout')
       .then((res) => {
         router.replace('/');
       })

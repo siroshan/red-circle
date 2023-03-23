@@ -47,7 +47,7 @@ const CustomDrawer = () => {
 
   const handleLogOut = () => {
     axios
-      .post('/signout')
+      .post('/auth/signout')
       .then((res) => {
         router.replace('/');
         toggleDrawer();
