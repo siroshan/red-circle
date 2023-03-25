@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode, useLayoutEffect, useMemo } from 'react';
 
 export type ViewportContextType = {
   width: number;
@@ -21,16 +21,20 @@ const ViewportProvider = ({ children }: { children: ReactNode }) => {
     setHeight(window.innerHeight);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
+
+  const value = useMemo(() => {
+    return { width, height };
+  }, [width, height]);
 
   /* Now we are dealing with a context instead of a Hook, so instead
      of returning the width and height we store the values in the
      value of the Provider */
   return (
-    <ViewportContext.Provider value={{ width, height }}>
+    <ViewportContext.Provider value={value}>
       {children}
     </ViewportContext.Provider>
   );

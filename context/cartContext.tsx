@@ -15,7 +15,7 @@ import { AxiosResponse } from 'axios';
 import { axiosErrorHandler } from '../utils/axiosErrorHandler';
 
 export type CartContextType = {
-  cartItems?: ICartItem[];
+  cartItems: ICartItem[];
 };
 
 export const CartContext = createContext<CartContextType>({
@@ -23,6 +23,7 @@ export const CartContext = createContext<CartContextType>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
+  console.log('cart provider');
 
   const [state, dispatch] = useReducer(cartReducer, { cartItems: [] });
 

@@ -11,11 +11,13 @@ import axios from '../../utils/axios';
 import { ICart } from '../../Interface/cart.interface';
 import { CartContext } from '../../context/cartContext';
 import ProfileMenu from './ProfileMenu';
+import { useUser } from '../../context/userContext';
 
 const NavBar = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const { cartItems } = useContext(CartContext);
-
+  const user = useUser();
+  
   return (
     <Box
       width={1}
@@ -79,7 +81,7 @@ const NavBar = () => {
               </Box>
             </Link>
           </Box>
-          <ProfileMenu />
+          {user && <ProfileMenu />}
         </Stack>
       </Stack>
     </Box>

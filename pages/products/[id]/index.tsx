@@ -25,20 +25,6 @@ const Index: FC<ProdCardProps> = ({ product, recommendedProducts }) => {
   const [qty, setQty] = useState(1);
   const { addToCart } = useContext(CartContext);
 
-  // const onAddToCart = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const res: AxiosResponse = await axios.patch('carts/add', {
-  //       productID: product.id,
-  //       qty: qty,
-  //     });
-  //     appToast('Item added to cart successfully');
-  //   } catch (err) {
-  //     axiosErrorHandler(err);
-  //   }
-  //   setIsLoading(false);
-  // };
-
   return (
     <Box width={1} bgcolor='primary.light'>
       <Box

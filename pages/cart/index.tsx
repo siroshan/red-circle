@@ -11,12 +11,7 @@ import { ICartItem } from '../../Interface/cartItem.interface';
 import { CartContext } from '../../context/cartContext';
 
 const Index: FC = () => {
-  const [cart, setCart] = useState<ICartItem[]>();
-  const [isLoading, setIsLoading] = useState(false);
-  const { cartItems } = useContext(CartContext);
-
-  console.log('cart page', cartItems);
-  
+  const { cartItems } = useContext(CartContext);  
 
   const getTotal = (cartItems: ICartItem[]) => {
     let sum: number = 0;
